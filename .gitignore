@@ -1,0 +1,14 @@
+build/
+*.vcd
+*.vvp
+*.log
+*.fsdb
+*.vpd
+*.vdb
+*.sdf
+*.spef
+*.ddc
+*.db
+.DS_Store
+Thumbs.db
+.vscode/

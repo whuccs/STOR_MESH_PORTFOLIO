@@ -1,0 +1,20 @@
+name: RTL demo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  iverilog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Icarus Verilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Compile and run demo
+        run: |
+          mkdir -p build
+          iverilog -g2012 -s tb_golden_owner_arbiter \
+            -o build/tb_golden_owner_arbiter.vvp \
+            rtl_demo/golden_owner_arbiter.sv tb/tb_golden_owner_arbiter.sv
+          vvp build/tb_golden_owner_arbiter.vvp
